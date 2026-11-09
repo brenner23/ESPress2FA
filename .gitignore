@@ -1,0 +1,8 @@
+.pio
+.vscode/
+tools/ota_keys.json
+*.bin
+# backups contain all 2FA secrets and the Wi-Fi password - never commit them
+*Sicherung*.json
+*backup*.json
+2FA-*.json
