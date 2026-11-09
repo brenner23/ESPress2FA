@@ -1,5 +1,11 @@
 # Changelog
 
+## Desktop 1.1.0
+- **ESPress2FA Desktop** (`desktop/`): the device web interface on the PC with an encrypted vault
+  (AES-256-GCM + scrypt), unlock page, auto-lock, click-to-copy, 127.0.0.1 only (port held exclusively)
+- Export to a phone authenticator: QR codes in the Google Authenticator transfer format (several pages) + link as text
+- New vaults start in the system language
+
 ## 1.5.0
 - First public release as **ESPress2FA**
 - Language **English / Deutsch** for the web interface and the device display (setting in the web)

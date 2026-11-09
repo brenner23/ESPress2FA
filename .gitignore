@@ -6,3 +6,11 @@ tools/ota_keys.json
 *Sicherung*.json
 *backup*.json
 2FA-*.json
+# desktop app: build output, generated page copy, vault files (encrypted, but personal)
+desktop/build/
+desktop/dist/
+desktop/dist_*/
+desktop/*.spec
+desktop/web/
+*.vault
+*.vault.tmp

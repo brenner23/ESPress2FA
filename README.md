@@ -93,6 +93,28 @@ python tools/espress2fa_tool.py ota firmware.bin --ip 192.168.x.y   # network up
 The tool finds the device on USB by itself and opens the port **without resetting** the board.
 `tools/ota_keys.json` holds your OTA keys – it is in `.gitignore`, don't share it.
 
+## Desktop app (`desktop/`) – the same web interface on your PC
+
+**ESPress2FA Desktop** shows exactly the device's web interface (accounts, drag & drop, rename, import, backup,
+EN/DE) in a window on your PC – e.g. as a single EXE on a USB stick. The page is taken straight from the firmware
+source, so device and desktop always look the same.
+
+- All accounts live in **one encrypted vault file** (`ESPress2FA.vault` next to the program): **AES-256-GCM**,
+  key derived from your **master password** with **scrypt** (deliberately slow against guessing).
+  ⚠️ The master password **cannot be recovered** – keep the device (or the services' recovery codes) as fallback.
+- Local server on **127.0.0.1 only** (port held exclusively), **no outgoing connections** at all.
+- Unlock page, 🔒 lock button, **auto-lock after 5 minutes**; **click on a code = copy** (clipboard cleared after 30 s).
+- **Export to a phone authenticator**: big QR codes in the Google Authenticator transfer format
+  (8 accounts per code, several pages) – plus the link as text to paste into a device's import field.
+- Import / export with the device's JSON backup (Settings → backup / restore).
+
+```bash
+cd desktop
+pip install -r requirements.txt
+python espress2fa_desktop.py              # app window (pywebview) - or --browser
+build_exe.bat                             # Windows: single EXE in desktop/dist/ (no installation)
+```
+
 ## Settings & data
 
 Everything is stored in the device's NVS – accounts, Wi-Fi, brightness, rotation, hold time, language, last account,

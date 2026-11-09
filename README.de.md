@@ -93,6 +93,28 @@ python tools/espress2fa_tool.py ota firmware.bin --ip 192.168.x.y   # Update üb
 Das Tool findet das Gerät am USB selbst und öffnet den Port **ohne Neustart** des Boards.
 `tools/ota_keys.json` enthält deine OTA-Schlüssel – sie steht in `.gitignore`, nicht weitergeben.
 
+## Desktop-Programm (`desktop/`) – dieselbe Weboberfläche am PC
+
+**ESPress2FA Desktop** zeigt genau die Weboberfläche des Geräts (Konten, Ziehen, Umbenennen, Import, Sicherung,
+EN/DE) in einem Fenster am PC – z. B. als einzelne EXE auf dem USB-Stick. Die Seite kommt direkt aus dem
+Firmware-Quelltext, Gerät und PC sehen also immer gleich aus.
+
+- Alle Konten liegen in **einer verschlüsselten Tresor-Datei** (`ESPress2FA.vault` neben dem Programm):
+  **AES-256-GCM**, Schlüssel aus deinem **Master-Passwort** per **scrypt** (absichtlich langsam gegen Raten).
+  ⚠️ Das Master-Passwort ist **nicht wiederherstellbar** – Gerät bzw. Wiederherstellungscodes der Dienste als Rückfallebene behalten.
+- Lokaler Server **nur auf 127.0.0.1** (Port exklusiv), **keinerlei Verbindungen nach außen**.
+- Entsperr-Seite, 🔒-Knopf, **Auto-Sperre nach 5 Minuten**; **Klick auf den Code = kopieren** (Zwischenablage nach 30 s geleert).
+- **Export aufs Handy**: große QR-Codes im Übertragungsformat des Google Authenticators
+  (8 Konten je Code, mehrere Seiten) – dazu der Link als Text zum Einfügen ins Import-Feld eines Geräts.
+- Import/Export mit der JSON-Sicherung des Geräts (Einstellungen → Sicherung / Einspielen).
+
+```bash
+cd desktop
+pip install -r requirements.txt
+python espress2fa_desktop.py              # App-Fenster (pywebview) – oder --browser
+build_exe.bat                             # Windows: einzelne EXE in desktop/dist/ (ohne Installation)
+```
+
 ## Einstellungen & Daten
 
 Alles liegt im NVS des Geräts – Konten, WLAN, Helligkeit, Drehung, Haltezeit, Sprache, letztes Konto, OTA-Schlüssel.

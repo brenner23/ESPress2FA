@@ -18,6 +18,15 @@
 | [TOTP-Arduino](https://github.com/lucadentella/TOTP-Arduino) (Luca Dentella) | Apache-2.0 |
 | Arduino-ESP32 core / ESP-IDF (Espressif) | LGPL-2.1 / Apache-2.0 |
 
+## Desktop app (`desktop/`, installed with pip, not part of this repository)
+
+| Library | License |
+|---|---|
+| [cryptography](https://github.com/pyca/cryptography) | Apache-2.0 OR BSD-3-Clause |
+| [qrcode](https://github.com/lincolnloop/python-qrcode) | BSD |
+| [pywebview](https://github.com/r0x0r/pywebview) | BSD-3-Clause |
+| [PyInstaller](https://github.com/pyinstaller/pyinstaller) (only to build the EXE) | GPL-2.0 with bootloader exception |
+
 Battery pin information for the Heltec T190 comes from the public Meshtastic firmware
 (`variants/esp32s3/heltec_vision_master_t190/variant.h`, GPL-3.0) – only the pin numbers / divider factor were used as
 hardware facts, no code was copied.
